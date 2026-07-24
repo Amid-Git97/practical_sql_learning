@@ -47,3 +47,20 @@ VALUES
 	interval_column,
 	timestamp_column - interval_column AS new_date
 FROM date_time_types;
+
+-- Transforming values from one data type to another with CAST
+
+SELECT timestamp_column, CAST(timestamp_column AS varchar(10))
+FROM date_time_types;
+
+SELECT numeric_column,
+       CAST(numeric_column AS integer),
+       CAST(numeric_column AS text)
+FROM number_data_types;
+
+-- Does not work:
+SELECT CAST(char_column AS integer) FROM char_data_types;
+
+-- Alternate notation for CAST is the double-colon:
+SELECT timestamp_column::varchar(10)
+FROM date_time_types;
