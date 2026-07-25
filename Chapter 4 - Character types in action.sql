@@ -64,3 +64,20 @@ SELECT CAST(char_column AS integer) FROM char_data_types;
 -- Alternate notation for CAST is the double-colon:
 SELECT timestamp_column::varchar(10)
 FROM date_time_types;
+
+
+
+--Excercise from Claude AI during chapter 4
+-- Creating a table and inserting values in the colums and assiging the right data type
+
+CREATE TABLE deliveries(
+	delivery_id integer GENERATED ALWAYS AS IDENTITY, first_name varchar(100), last_name varchar(100), delivery_date date,mileage numeric (4,1));
+
+INSERT INTO deliveries (first_name, last_name,delivery_date, mileage)
+	VALUES	('James', 'Anderson', '2024-03-15', 127.4),
+			('Sarah','Thompson','2024-03-15', 89.2),
+			('Marcus', 'Webb','2024-03-15', 234.7),
+			('Lisa','Patel','2024-03-15',56.8);
+
+     SELECT * FROM deliveries
+ORDER BY mileage DESC;       
