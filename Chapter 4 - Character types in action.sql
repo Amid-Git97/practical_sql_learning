@@ -81,3 +81,9 @@ INSERT INTO deliveries (first_name, last_name,delivery_date, mileage)
 
      SELECT * FROM deliveries
 ORDER BY mileage DESC;       
+
+
+
+
+CREATE TABLE patients (
+	id integer GENERATED ALWAYS AS IDENTITY, first_name varchar(100), last_name varchar(100), Birth_date date, weight numeric(5,2), current_patient boolean);
