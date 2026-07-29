@@ -18,3 +18,43 @@ CREATE TABLE us_counties_pop_est_2019 (
     residual_2019 integer,                   -- Residual for 2018-07-01 to 2019-06-30
     CONSTRAINT counties_2019_key PRIMARY KEY (state_fips, county_fips)	
 ); 
+
+
+-- Listing 5-3: Importing Census data using COPY Stament
+
+COPY us_counties_pop_est_2019
+FROM 'C:\YourDirectory\us_counties_pop_est_2019.csv'
+WITH (FORMAT CSV, HEADER);
+
+-- Checking the data
+
+SELECT * FROM us_counties_pop_est_2019;
+
+SELECT county_name, state_name, area_land
+FROM us_counties_pop_est_2019
+ORDER BY area_land DESC
+LIMIT 3;
+
+SELECT county_name, state_name, internal_point_lat, internal_point_lon
+FROM us_counties_pop_est_2019
+ORDER BY internal_point_lon DESC
+LIMIT 5;
+
+
+-- Listing 5-4: Creating a table to track supervisor salaries
+
+CREATE TABLE supervisor_salaries (
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    town text,
+    county text,
+    supervisor text,
+    start_date date,
+    salary numeric(10,2),
+    benefits numeric(10,2)
+);
+
+-- Listing 5-5: Importing salaries data from CSV to three table columns
+
+COPY supervisor_salaries (town, supervisor, salary)
+FROM 'C:\YourDirectory\supervisor_salaries.csv'
+WITH (FORMAT CSV, HEADER);
