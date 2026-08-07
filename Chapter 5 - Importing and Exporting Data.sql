@@ -77,3 +77,11 @@ SELECT town, 'Mills', supervisor, salary
 FROM supervisor_salaries_temp;
 
 DROP TABLE supervisor_salaries_temp;
+
+
+
+-- Using COPY TO export
+
+COPY us_counties_pop_est_2019
+TO '/Users/amidkamara/Desktop/practical-sql-2-main/chapter_05/us_counties_export.txt'
+WITH (FORMAT CSV, HEADER, DELIMITER '|');
