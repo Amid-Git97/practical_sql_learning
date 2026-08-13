@@ -85,3 +85,22 @@ DROP TABLE supervisor_salaries_temp;
 COPY us_counties_pop_est_2019
 TO '/Users/amidkamara/Desktop/practical-sql-2-main/chapter_05/us_counties_export.txt'
 WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+
+
+-- Listing 5-9: Exporting selected columns from a table with COPY
+
+COPY us_counties_pop_est_2019 
+    (county_name, internal_point_lat, internal_point_lon)
+TO 'C:\YourDirectory\us_counties_latlon_export.txt'
+WITH (FORMAT CSV, HEADER, DELIMITER '|');
+
+-- Listing 5-10: Exporting query results with COPY
+
+COPY (
+    SELECT county_name, state_name
+    FROM us_counties_pop_est_2019
+    WHERE county_name ILIKE '%mill%'
+     )
+TO 'C:\YourDirectory\us_counties_mill_export.csv'
+WITH (FORMAT CSV, HEADER);
