@@ -104,3 +104,34 @@ COPY (
      )
 TO 'C:\YourDirectory\us_counties_mill_export.csv'
 WITH (FORMAT CSV, HEADER);
+
+
+-- Exercise 1: Write a WITH statement to import an imaginary text file
+-- The file uses a colon (:) as the delimiter and hash (#) as the quote character
+-- to wrap fields that contain colons inside them (e.g. #Mission: Impossible#)
+-- First create the table with the matching columns before importing
+
+CREATE TABLE movie_listing (
+    id integer,
+    movie text,
+    actor text
+);
+
+COPY movie_listing
+FROM '/Users/amidkamara/Desktop/movie_listing.csv'
+WITH (FORMAT CSV, HEADER, DELIMITER ':', QUOTE '#');
+
+
+-- Exercise 2: Export the 20 US counties with the most births in 2019
+-- Only exporting county name, state name and birth count
+-- Ordered by births descending and limited to top 20
+-- Saved as a comma separated CSV file
+
+COPY (
+    SELECT county_name, state_name, births_2019
+    FROM us_counties_pop_est_2019
+    ORDER BY births_2019 DESC
+    LIMIT 20
+)
+TO '/Users/amidkamara/Desktop/practical-sql-2-main/chapter_05/us_counties_top20.csv'
+WITH (FORMAT CSV, HEADER, DELIMITER ',');
