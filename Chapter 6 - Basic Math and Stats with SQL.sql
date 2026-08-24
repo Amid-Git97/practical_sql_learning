@@ -31,3 +31,28 @@ SELECT (7 + 8) * 9;	-- answer: 135
 
 SELECT 3 ^ 3 - 1;   -- answer: 26
 SELECT 3 ^ (3 - 1); -- answer: 9
+
+
+-- Listing 6-4: Selecting census population estimate columns with aliases
+
+SELECT county_name AS county,
+       state_name AS state,
+       pop_est_2019 AS pop,
+       births_2019 AS births,
+       deaths_2019 AS deaths,
+       international_migr_2019 AS int_migr,
+       domestic_migr_2019 AS dom_migr,
+       residual_2019 AS residual
+FROM us_counties_pop_est_2019;
+
+-- Listing 6-5: Subtracting two columns in us_counties_pop_est_2019
+
+SELECT county_name AS county,
+       state_name AS state,
+       births_2019 AS births,
+       deaths_2019 AS deaths,
+       births_2019 - deaths_2019 AS natural_increase
+FROM us_counties_pop_est_2019
+ORDER BY state_name, county_name;
+
+-- Listing 6-6: Checking census data totals
