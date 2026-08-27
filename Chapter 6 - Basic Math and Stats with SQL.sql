@@ -68,3 +68,19 @@ SELECT county_name AS county,
            residual_2019) AS difference
 FROM us_counties_pop_est_2019
 ORDER BY difference DESC;
+
+
+-- Listing 6-7: Calculating the percent of a county's area that is water
+
+SELECT county_name AS county,
+       state_name AS state,
+       area_water::numeric / (area_land + area_water) * 100 AS pct_water
+FROM us_counties_pop_est_2019
+ORDER BY pct_water DESC;
+
+
+SELECT county_name AS county,
+	State_name AS state,
+	CAST(CAST(area_water AS numeric) / (area_land + area_water)  * 100 AS numeric(6,2)) AS pct_water
+FROM us_counties_pop_est_2019
+ORDER BY pct_water DESC;
