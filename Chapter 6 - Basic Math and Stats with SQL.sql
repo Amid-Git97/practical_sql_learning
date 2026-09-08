@@ -109,3 +109,25 @@ SELECT department,
        round( (spend_2022 - spend_2019) /
                     spend_2019 * 100, 1) AS pct_change
 FROM percent_change;
+
+-- Listing 6-9: Using the sum() and avg() aggregate functions
+
+SELECT sum(pop_est_2019) AS county_sum,
+       round(avg(pop_est_2019), 0) AS county_average
+FROM us_counties_pop_est_2019;
+
+-- Listing 6-10: Testing SQL percentile functions
+
+CREATE TABLE percentile_test (
+    numbers integer
+);
+
+INSERT INTO percentile_test (numbers) VALUES
+    (1), (2), (3), (4), (5), (6);
+
+SELECT
+    percentile_cont(.5)
+    WITHIN GROUP (ORDER BY numbers),
+    percentile_disc(.5)
+    WITHIN GROUP (ORDER BY numbers)
+FROM percentile_test;
