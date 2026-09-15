@@ -164,3 +164,38 @@ SELECT unnest(
             WITHIN GROUP (ORDER BY pop_est_2019)
             ) AS quartiles
 FROM us_counties_pop_est_2019;
+
+
+-- Listing 6-14: Finding the most-frequent value with mode()
+
+SELECT mode() WITHIN GROUP (ORDER BY births_2019)
+FROM us_counties_pop_est_2019;
+
+
+--try yourself extras 
+
+SELECT 3.14 * 5 ^ 2;
+
+-- 2. Using the 2019 Census county estimates data, calculate a ratio of births to 
+-- deaths for each county in New York state. Which region of the state generally
+-- saw a higher ratio of births to deaths in 2019?
+
+
+SELECT county_name,
+       state_name,
+       births_2019 AS births,
+       deaths_2019 AS DEATHS,
+       births_2019::numeric / deaths_2019 AS birth_death_ratio
+FROM us_counties_pop_est_2019
+WHERE state_name = 'New York'
+ORDER BY birth_death_ratio DESC;
+
+
+-- 3. Was the 2019 median county population estimate higher in California or New York?
+
+SELECT state_name,
+       percentile_cont(0.5)
+          WITHIN GROUP (ORDER BY pop_est_2019) AS median
+FROM us_counties_pop_est_2019
+WHERE state_name IN ('New York', 'California')
+GROUP BY state_name;
