@@ -20,3 +20,9 @@ SELECT first_name, last_name, school, salary
 FROM teachers
 WHERE school = 'F.D. Roosevelt HS'
 AND salary >= 36000 AND salary <= 65000;
+
+
+SELECT first_name,last_name, school, hire_date, salary
+FROM teachers
+WHERE hire_date >= '2005-01-01'
+ORDER BY salary DESC;
