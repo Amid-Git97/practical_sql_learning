@@ -26,3 +26,8 @@ SELECT first_name,last_name, school, hire_date, salary
 FROM teachers
 WHERE hire_date >= '2005-01-01'
 ORDER BY salary DESC;
+
+
+SELECT DISTINCT school
+FROM teachers 
+ORDER BY school ASC;
