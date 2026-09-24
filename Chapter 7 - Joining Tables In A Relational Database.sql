@@ -64,3 +64,50 @@ INSERT INTO district_2035 VALUES
     (3, 'Morrison Elementary'),
     (4, 'Chase Magnet Academy'),
     (6, 'Webutuck High School');
+
+    -- Listing 7-4: Using JOIN
+
+SELECT *
+FROM district_2020 JOIN district_2035
+ON district_2020.id = district_2035.id
+ORDER BY district_2020.id;
+
+-- Bonus: Also can be specified as INNER JOIN
+SELECT *
+FROM district_2020 INNER JOIN district_2035
+ON district_2020.id = district_2035.id
+ORDER BY district_2020.id;
+
+-- Listing 7-5: JOIN with USING
+
+SELECT *
+FROM district_2020 JOIN district_2035
+USING (id)
+ORDER BY district_2020.id;
+
+-- Listing 7-6: Using LEFT JOIN
+
+SELECT *
+FROM district_2020 LEFT JOIN district_2035
+ON district_2020.id = district_2035.id
+ORDER BY district_2020.id;
+
+-- Listing 7-7: Using RIGHT JOIN
+
+SELECT *
+FROM district_2020 RIGHT JOIN district_2035
+ON district_2020.id = district_2035.id
+ORDER BY district_2035.id;
+
+-- Listing 7-8: Using FULL OUTER JOIN
+
+SELECT *
+FROM district_2020 FULL OUTER JOIN district_2035
+ON district_2020.id = district_2035.id
+ORDER BY district_2020.id;
+
+-- Listing 7-9: Using CROSS JOIN
+
+SELECT *
+FROM district_2020 CROSS JOIN district_2035
+ORDER BY district_2020.id, district_2035.id;
