@@ -145,3 +145,9 @@ SELECT d20.id,
 FROM district_2020 AS d20 LEFT JOIN district_2035 AS d35
 ON d20.id = d35.id
 ORDER BY d20.id;
+
+
+SELECT dept, city, first_name
+FROM departments LEFT JOIN employees
+ON departments.dept_id = employees.dept_id
+ORDER BY departments.dept_id;
