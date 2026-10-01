@@ -187,3 +187,18 @@ FROM district_2020 AS d20 JOIN district_2020_enrollment AS en
 JOIN district_2020_grades AS gr
     ON d20.id = gr.id
 ORDER BY d20.id;
+
+
+-- Listing 7-14: Combining query results with UNION
+
+SELECT * FROM district_2020
+UNION
+SELECT * FROM district_2035
+ORDER BY id;
+
+-- Listing 7-15: Combining query results with UNION ALL
+
+SELECT * FROM district_2020
+UNION ALL
+SELECT * FROM district_2035
+ORDER BY id;
