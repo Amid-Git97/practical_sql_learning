@@ -49,3 +49,15 @@ SELECT first_name, last_name, employees.dept_id
 FROM employees LEFT JOIN departments
 ON employees.dept_id = departments.dept_id
 WHERE departments.dept_id IS NULL;
+
+
+SELECT '2020' AS year, 
+	    school_2020 AS school
+FROM district_2020
+
+UNION ALL
+
+SELECT '2035' AS year,
+	   school_2035 AS school
+FROM district_2035
+ORDER BY school
