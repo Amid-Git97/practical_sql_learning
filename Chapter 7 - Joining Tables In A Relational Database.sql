@@ -269,3 +269,14 @@ FROM us_counties_pop_est_2019 AS c2019
 	JOIN us_counties_pop_est_2010 AS c2010
 ON c2019.state_fips = c2010.state_fips
 	AND c2019.county_fips = c2010.county_fips;
+
+
+
+SELECT '2019' AS year, county_name, state_name,pop_est_2019 AS population
+FROM us_counties_pop_est_2019
+
+UNION ALL 
+
+SELECT '2010' AS year, county_name, state_name, estimates_base_2010 AS population
+FROM us_counties_pop_est_2010
+ORDER BY year DESC;
