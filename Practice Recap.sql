@@ -74,3 +74,8 @@ ON   c2019.state_fips = c2010.state_fips
      AND c2019.county_fips = c2010.county_fips
 WHERE c2019.state_name = 'Texas'
 ORDER BY c2019.pop_est_2019 DESC;
+
+
+SELECT first_name, last_name, mileage
+FROM deliveries 
+WHERE mileage > 100;
