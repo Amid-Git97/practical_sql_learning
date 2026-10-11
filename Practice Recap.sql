@@ -79,3 +79,14 @@ ORDER BY c2019.pop_est_2019 DESC;
 SELECT first_name, last_name, mileage
 FROM deliveries 
 WHERE mileage > 100;
+
+CREATE TABLE transfer (
+	id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	first_name varchar(50) NOT NULL,
+	last_name varchar(50) NOT NULL,
+	club_from varchar(50) NOT NULL,
+	club_to varchar(50) NOT NULL,
+	transfer_fee numeric(10,2), --i know needs constraint but dont know how still fresh --CHECK
+	transfer_date date,
+	shirt_number integer);--i know needs constraint but dont know how still fresh - UNIQUE
+	--COMPOSITE KEY FOR COMBINATION OF players last name and club
