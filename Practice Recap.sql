@@ -90,3 +90,17 @@ CREATE TABLE transfer (
 	transfer_date date,
 	shirt_number integer);--i know needs constraint but dont know how still fresh - UNIQUE
 	--COMPOSITE KEY FOR COMBINATION OF players last name and club
+
+
+
+CREATE TABLE transfers (
+    id integer GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    first_name varchar(50) NOT NULL,
+    last_name varchar(50) NOT NULL,
+    club_from varchar(50) NOT NULL,
+    club_to varchar(50) NOT NULL,
+    transfer_fee numeric(10,2) CONSTRAINT fee_check CHECK (transfer_fee > 0),
+    transfer_date date NOT NULL,
+    shirt_number integer CONSTRAINT number_check CHECK (shirt_number BETWEEN 1 AND 99),
+    CONSTRAINT duplicate_check UNIQUE (last_name, club_to)
+);
