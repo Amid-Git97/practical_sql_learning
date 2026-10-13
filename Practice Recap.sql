@@ -104,3 +104,9 @@ CREATE TABLE transfers (
     shirt_number integer CONSTRAINT number_check CHECK (shirt_number BETWEEN 1 AND 99),
     CONSTRAINT duplicate_check UNIQUE (last_name, club_to)
 );
+
+
+
+SELECT first_name, last_name, hire_date, school
+FROM teachers 
+ORDER BY school;
