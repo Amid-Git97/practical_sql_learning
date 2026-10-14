@@ -110,3 +110,8 @@ CREATE TABLE transfers (
 SELECT first_name, last_name, hire_date, school
 FROM teachers 
 ORDER BY school;
+
+
+--adding column to existing table
+ALTER TABLE employees 
+ADD COLUMN department_code varchar(10) NOT NULL;
