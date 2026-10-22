@@ -102,3 +102,11 @@ VALUES ('A203391', '2022-03-17', 'T229901');
 
 INSERT INTO registrations (registration_id, registration_date, license_id)
 VALUES ('A75772', '2022-03-17', 'T000001');
+
+--Automatically delete with cascade
+CREATE TABLE registrations (
+	resgistration_id text,
+	resgistration_date date,
+	license_id text REFERENCES licenses (license_id) ON DELETE CASCADE,
+	CONSTRAINT resgistration_key PRIMARY KEY (resgistration_id, license_id)
+	);
