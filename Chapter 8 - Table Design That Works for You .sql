@@ -110,3 +110,14 @@ CREATE TABLE registrations (
 	license_id text REFERENCES licenses (license_id) ON DELETE CASCADE,
 	CONSTRAINT resgistration_key PRIMARY KEY (resgistration_id, license_id)
 	);
+
+
+-- Listing 8-8: Examples of CHECK constraints
+
+CREATE TABLE check_constraint_example (
+    user_id bigint GENERATED ALWAYS AS IDENTITY,
+    user_role text,
+    salary numeric(10,2),
+    CONSTRAINT user_id_key PRIMARY KEY (user_id),
+    CONSTRAINT check_role_in_list CHECK (user_role IN('Admin', 'Staff')),
+    CONSTRAINT check_salary_not_below_zero CHECK (salary >= 0)
