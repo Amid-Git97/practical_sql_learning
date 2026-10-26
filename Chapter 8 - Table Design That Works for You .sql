@@ -151,3 +151,6 @@ CREATE TABLE not_null_example (
     first_name text NOT NULL,
     last_name text NOT NULL,
     CONSTRAINT student_id_key PRIMARY KEY (student_id)
+
+
+    ALTER TABLE not_null_example DROP CONSTRAINT student_id_key;
