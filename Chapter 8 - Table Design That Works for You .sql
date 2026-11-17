@@ -161,3 +161,20 @@ CREATE TABLE not_null_example (
     ALTER TABLE not_null_example ALTER COLUMN first_name DROP NOT NULL;
 
     ALTER TABLE not_null_example ALTER COLUMN first_name SET NOT NULL;
+
+
+    -- Listing 8-12: Importing New York City address data
+
+CREATE TABLE new_york_addresses (
+    longitude numeric(9,6),
+    latitude numeric(9,6),
+    street_number text,
+    street text,
+    unit text,
+    postcode text,
+    id integer CONSTRAINT new_york_key PRIMARY KEY
+);
+
+COPY new_york_addresses
+FROM 'C:\YourDirectory\city_of_new_york.csv'
+WITH (FORMAT CSV, HEADER);
