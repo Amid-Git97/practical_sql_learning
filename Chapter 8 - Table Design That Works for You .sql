@@ -178,3 +178,8 @@ CREATE TABLE new_york_addresses (
 COPY new_york_addresses
 FROM 'C:\YourDirectory\city_of_new_york.csv'
 WITH (FORMAT CSV, HEADER);
+
+-- Listing 8-13: Benchmark queries for index performance
+
+EXPLAIN ANALYZE SELECT * FROM new_york_addresses
+WHERE street = 'BROADWAY';
